@@ -1,13 +1,64 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Django</title>
-</head>
-<body>
-    {% block content  %}
-    {% endblock content %}
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock title %}</title>
+  </head>
+
+  <body class="flex flex-col items-center text-xl min-h-screen justify-between">
+    <header
+      class="flex gap-4 bg-white items-center border-b border-gray-200 shadow-md px-4 py-2 w-full"
+    >
+      <div class="flex-1 flex gap-4 items-center">
+        <h1 class="text-3xl">
+          <a> e-shoes </a>
+        </h1>
+      </div>
+      <nav class="flex gap-3 items-center text-[14px]">
+        <a>Events</a>
+        <a>Page</a>
+        <a>Home</a>
+      </nav>
+    </header>
+    {% if user.is_authenticated %}
+    <h1 class="text-3xl">Welcome {{user.username}}</h1>
+    {% endif %} {% block content %} {% endblock content %}
+
+    <footer class="flex p-5 bg-slate-900 text-white gap-4">
+      <div class="flex flex-col gap-4 max-w-[50%]">
+        <h3 class="text-2xl">About</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+          quibusdam suscipit placeat alias incidunt culpa harum amet dolor
+          omnis. Id totam reprehenderit velit. Quos quae saepe debitis, vero
+          sunt doloribus.
+        </p>
+      </div>
+      <div class="flex flex-col gap-4">
+        <h3 class="text-2xl">Services</h3>
+        <ul class="flex gap-4 flex-col">
+          <li>
+            <a href="" class="text-teal-300 hover:text-teal-600"
+              >Working Hours</a
+            >
+          </li>
+          <li>
+            <a href="" class="text-teal-300 hover:text-teal-600"
+              >Privacy Policy</a
+            >
+          </li>
+          <li>
+            <a href="" class="text-teal-300 hover:text-teal-600">Contact</a>
+          </li>
+          <li>
+            <a href="" class="text-teal-300 hover:text-teal-600">Platform</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+  <script src="https://cdn.tailwindcss.com"></script>
 </html>
